@@ -4,8 +4,8 @@ class Config:
 
     
     # MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    SECRET_KEY = '707569981'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://elly:Access2020@localhost/YuBlog'
 
 
 class ProdConfig(Config):
