@@ -4,15 +4,15 @@ from flask_login import login_required,current_user,login_user,logout_user
 from .forms import ArticleUploadForm,CommentsForm,UpdateProfile
 from .. import db,photos
 from ..models import Article,Comment,User,  Quotes
-# from ..requests import getQuotes
+from ..requests import getQuotes
 
 @main.route('/')
 def index():
-    # articles = Article.get_article()
-    # try:
-    #     quotes = getQuotes()
-    # except Exception as e:
-    #     quotes = "quotes unavailable"
+    articles = Article.get_article()
+    try:
+        quotes = getQuotes()
+    except Exception as e:
+        quotes = "quotes unavailable"
     title='Welcome to the article'
     return render_template('index.html')
 

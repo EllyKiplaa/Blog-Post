@@ -39,7 +39,7 @@ class User(UserMixin,db.Model):
         '''
         confirms password equal to the password hash during login
         '''
-        check_password_hash(self.password_hash,password)
+        return check_password_hash(self.password_hash,password)
 
 class Article(db.Model):
     '''

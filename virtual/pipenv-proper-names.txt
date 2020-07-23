@@ -1,0 +1,13 @@
+Flask
+Flask-Login
+Flask-Script
+Flask-SQLAlchemy
+Flask-WTF
+Jinja2
+MarkupSafe
+Pillow
+PyYAML
+SecretStorage
+SQLAlchemy
+Werkzeug
+WTForms
