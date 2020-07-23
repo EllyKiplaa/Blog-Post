@@ -1,21 +1,32 @@
 import os
-
 class Config:
-
-    
-    # MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
-    SECRET_KEY = '707569981'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://elly:Access2020@localhost/YuBlog'
-
+    '''
+    General configuration settings
+    '''
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
+    QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
 
 class ProdConfig(Config):
-    pass
-
+    '''
+    Production Configurations
+    '''
+    SECRET_KEY="testkeyintestconfig"
+    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://elly:Access2020@localhost/YuBlog"
 
 class DevConfig(Config):
+    '''
+    Development Configurations
+    '''
+    SECRET_KEY="testkeyindevconfig"
+    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://elly:Access2020@localhost/YuBlog"
     DEBUG = True
 
-config_options = {
-'development':DevConfig,
-'production':ProdConfig
+class TestConfig(Config):
+    SECRET_KEY="testkeyintestconfig"
+    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://elly:Access2020@localhost/YuBlog_test"
+
+configurations = {
+    "production":ProdConfig,
+    "development":DevConfig,
+    "testing":TestConfig
 }
