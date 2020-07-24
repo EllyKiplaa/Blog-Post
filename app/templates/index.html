@@ -1,46 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 {% extends 'base.html'%}
-
 {% import 'bootstrap/wtf.html' as wtf %}
 
 
 {% block styles%}
     {{ super() }}
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+
+     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     
-    
 {% endblock %}
-
+{
+<div class="articles">
 {% block content %}
 
-<div class="landingspot">
-    <div class="container-fluid">
+<div class="landingspot" style= "background-image:url("https://images.unsplash.com/photo-1547083723-7c73eaf54cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");">
+    <div class="container">
         <div class="textmiddle">
-            <h1 style="font-family: 'Berkshire Swash', cursive;">Welcome To EliteBlog</h1>
-          
-            <a href="{{url_for('main.add_article')}}" class="btn btn-primary">Write An Article</a>
-            <a href="{{url_for('auth.register')}}" class="btn btn-primary">Sign Up</a>
-        </div>
-    </div>
-</div>
-<div class="container-fluid">
-<div class="row">
-    <div>
-        <h1>Article Headlines</h1>
-        {% for article in articles %}
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ article.category }}</div>
-                <div class="panel-body">
-                    <p>{{ article.article | truncate(200) }}</p>
-                    <p><strong>{{ article.user.username }}</strong></p>
-                    <a href="{{url_for('main.comment',article_id=article.id)}}" class="btn btn-primary">Read-full
-                        Article</a>
+            <marquee width="60%" height="100px">
+                 <h1 style="font-family: 'Lily Script One', cursive; text-align:center; justify-content:center;">Welcome To EliteBlog</h1>
+            </marquee>
+
+            <div class="card">
+                <div class="card-header">
+                    Quote
+                   </div>
+                            <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p><i>{{ quotes.quote }}</i></p>
+                        <footer class="blockquote-footer"> <cite title="Source Title"><p>{{ quotes.author }}</p></cite></footer>
+                        </blockquote>
+                    </div>
+                        </div>
+                
+                        <div class="card">
+                        <div class="card-body">
+                        <p>
+                        
+                         </p>
+                         <button type="button" class="btn btn-warning btn-circle">
+                        <a href="{{url_for('main.add_article')}}" class="fa fa-newspaper-o" aria-hidden="true">Write An Article</a>
+                       <button type="button" class="btn btn-warning btn-circle">
+                           <a href="{{url_for('auth.register')}}" class="mdi mdi-map-marker">Sign Up</a>
+                           <i class="fas fa-sign-in-alt"></i>
+                        </button>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
+<div class="container">
+  <div class="row">
+       <div>
+          <h1 style="font-family: 'Lily Script One', cursive; text-align:center; color:blue;">Headline Stories</h1>
+            {% for article in articles %}
+            <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">{{ article.category }}</div>
+                  <div class="card-body">
+                        <p >{{ article.article}}</p>
+                        <p><strong>{{ article.user.username }}</strong></p>
+                         <button type="button" class="btn btn-warning btn-circle">
+                        <a href="{{url_for('main.comment',article_id=article.id)}}">Read-full Article</a>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+      </div>
+   </div>
 </div>
+</div>
+
 {% endblock  %}
+
+    <!-- footer -->
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %} 
+</body>
+</html>

@@ -14,7 +14,7 @@ def index():
     except Exception as e:
         quotes = "quotes unavailable"
     title='Welcome to the article'
-    return render_template('index.html')
+    return render_template('index.html',articles=articles,quotes = quotes)
 
 @main.route('/addarticle',methods = ['GET','POST'])
 @login_required
