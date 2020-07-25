@@ -10,8 +10,8 @@ class ProdConfig(Config):
     '''
     Production Configurations
     '''
-    SECRET_KEY="testkeyintestconfig"
-    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://elly:Access2020@localhost/YuBlog"
+    SECRET_KEY=os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI= os.environ.get('DATABASE_URL')
 
 class DevConfig(Config):
     '''
