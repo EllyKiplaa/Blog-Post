@@ -19,12 +19,7 @@
                 <ul class="nav navbar-nav">
                   
                     <li><a class="list-group-item" href="/"><i class="fa fa-home fa-fw red-text pr-3" aria-hidden="true"></i>&nbsp; Home</a></li>
-                        
-                    
-            </div>
-                <ul class="nav navbar-nav navbar-right">
-                  {% if current_user.is_authenticated %}
-                  <li><a href="{{url_for('main.profile',username=current_user.username)}}" class="fa fa-user" aria-hidden="true">Profile</a></li>
+                        4ABBADe',username=current_user.username)}}" class="fa fa-user" aria-hidden="true">Profile</a></li>
                   
                           <li><a href="{{url_for('auth.logout')}}" class="fa fa-sign-out" aria-hidden="true">Sign out</a></li>
                   {% else %}
