@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Google Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
 <!-- Bootstrap core CSS -->
 
      <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
@@ -24,22 +25,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     
 {% endblock %}
-{
-<div class="articles">
-{% block content %}
 
-<div class="landingspot" style= "background-image:url("https://images.unsplash.com/photo-1547083723-7c73eaf54cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");">
+{% block content %}
+<style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1593642634367-d91a135587b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<div style= "background-image:url();">
     <div class="container">
         <div class="textmiddle">
             <marquee width="60%" height="100px">
                  <h1 style="font-family: 'Lily Script One', cursive; text-align:center; justify-content:center;">Welcome To EliteBlog</h1>
             </marquee>
 
-            <div class="card">
+            <div class="card" style="background-color:#F5EBEB;">
                 <div class="card-header">
-                    Quote
+                    <h2 style="text-align:center;">Quote</h2>
                    </div>
-                            <div class="card-body">
+                        <div class="card-body">
                         <blockquote class="blockquote mb-0">
                         <p><i>{{ quotes.quote }}</i></p>
                         <footer class="blockquote-footer"> <cite title="Source Title"><p>{{ quotes.author }}</p></cite></footer>
@@ -52,12 +59,9 @@
                         <p>
                         
                          </p>
-                         <button type="button" class="btn btn-warning btn-circle">
+                         <button type="button" class="btn btn-info">
                         <a href="{{url_for('main.add_article')}}" class="fa fa-newspaper-o" aria-hidden="true">Write An Article</a>
-                       <button type="button" class="btn btn-warning btn-circle">
-                           <a href="{{url_for('auth.register')}}" class="mdi mdi-map-marker">Sign Up</a>
-                           <i class="fas fa-sign-in-alt"></i>
-                        </button>
+                      
                 </div>
             </div>
         </div>
@@ -66,16 +70,16 @@
 <div class="container">
   <div class="row">
        <div>
-          <h1 style="font-family: 'Lily Script One', cursive; text-align:center; color:blue;">Headline Stories</h1>
+          <h1 style="font-family:Lily Script One, cursive; text-align:center; color:blue;">Headline Stories</h1>
             {% for article in articles %}
             <div class="col-md-6">
-            <div class="panel panel-warning">
+            <div class="panel panel-info">
                 <div class="panel-heading">{{ article.category }}</div>
                   <div class="card-body">
                         <p >{{ article.article}}</p>
                         <p><strong>{{ article.user.username }}</strong></p>
-                         <button type="button" class="btn btn-warning btn-circle">
-                        <a href="{{url_for('main.comment',article_id=article.id)}}">Read-full Article</a>
+                         
+                        <a class="btn btn-primary btn-circle" href="{{url_for('main.comment',article_id=article.id)}}">VIEW BLOG</a>
                     </div>
                 </div>
             </div>
@@ -84,12 +88,33 @@
    </div>
 </div>
 </div>
+<footer style='background-color: #4ABBAD' class="page-footer font-small unique-color-dark pt-4">
+
+    <!-- Footer Elements -->
+    <div style='background-color: #4ABBAD' class="container">
+
+        <!-- Call to action -->
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Subscribe to fun blog</h5>
+            </li>
+            <li class="list-inline-item">
+                <a href="/subscription" class="btn btn-outline-white btn-rounded">Sign up!</a>
+            </li>
+        </ul>
+        <!-- Call to action -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/">Fun eliteblog.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 
 {% endblock  %}
-
-    <!-- footer -->
-{% block footer %}
-    {% include 'footer.html' %}
-{% endblock footer %} 
 </body>
 </html>

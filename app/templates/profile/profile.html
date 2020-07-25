@@ -1,11 +1,33 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
+
+{% block styles%}
+    {{ super() }}
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+
+     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    
+    {% endblock %}
+    <style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<div class="container-fluid">
 <div class="row">
 <!-- displaying  Username-->
   <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
+    <h3> {{user.username}} </h3>
 
     {% if user.profile_pic_path %}
     <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
@@ -30,11 +52,11 @@
         <a href="{{url_for('main.profle_update',username=user.username)}}" class="btn btn-primary">Edit profile</a>
     {% endif %}
   </div>
-      <h1>My Articles</h1>
+      <h1 style="text-align:center;">My Articles</h1>
       {% for myarticle in my_articles %}
       <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">My Article</div>
+      <div class="panel panel-info">
+        <div class="panel-heading" style = "text-align:center;" >My Article</div>
         <div class="panel-body">
           {{ myarticle.article}}
       </div>
@@ -43,8 +65,34 @@
       {% endfor %}
 </div>
 <div class="row">
-    
+    <footer style='background-color: #4ABBAD' class="page-footer font-small unique-color-dark pt-4">
+
+    <!-- Footer Elements -->
+    <div style='background-color: #4ABBAD' class="container">
+
+        <!-- Call to action -->
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Subscribe to fun blog</h5>
+            </li>
+            <li class="list-inline-item">
+                <a href="/subscription" class="btn btn-outline-white btn-rounded">Sign up!</a>
+            </li>
+        </ul>
+        <!-- Call to action -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/">Fun eliteblog.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 
 </div>
 </div>
+
 {% endblock %}
