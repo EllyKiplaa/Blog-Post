@@ -1,6 +1,6 @@
-import requests
 from config import Config
 from .models import Quotes
+from app import requests
 
 quotes_url = Config.QUOTES_URL
 
