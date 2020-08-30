@@ -4,7 +4,7 @@ from flask_login import login_required,current_user,login_user,logout_user
 from .forms import ArticleUploadForm,CommentsForm,UpdateProfile
 from .. import db,photos
 from ..models import Article,Comment,User,  Quotes
-from ..requests import getQuotes
+from .requests import get_quotes
 
 @main.route('/')
 def index():
